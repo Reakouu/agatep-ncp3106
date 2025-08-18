@@ -18,12 +18,17 @@ body {
   color: var(--dark-green);
 }
 
-/* Completely redesigned hero section to match the modern aesthetic */
+/* ============================= */
+/* HERO SECTION */
+/* ============================= */
 .hero-section {
   min-height: 100vh;
   background: var(--cream-color);
   position: relative;
   overflow: hidden;
+
+  /* 👇 pushes content below navbar */
+  padding-top: 120px;
 }
 
 .hero-left {
@@ -34,11 +39,12 @@ body {
 .hero-right {
   background: var(--cream-color);
   position: relative;
+  margin-right: -50px;
 }
 
 .hero-content {
   max-width: 600px;
-  margin-left: 2rem;
+  margin-left: 5rem;
 }
 
 .hero-greeting {
@@ -60,21 +66,25 @@ body {
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 900;
   color: var(--beige-text);
-  line-height: 0.9;
+  line-height: 1.1;       /* slightly bigger so spacing looks natural */
   letter-spacing: -2px;
   margin: 2rem 0;
   text-transform: uppercase;
+  white-space: normal;    /* ensures wrapping works naturally */
+  display: inline-block;  /* keeps both lines grouped */
 }
 
+
 .hero-profile-img {
-  width: 350px;
-  height: 450px;
+  width: 500px;
+  height: 500px;
   object-fit: cover;
-  border-radius: 0;
+  border-radius: 80%; /* 👈 makes it circular */
   border: none;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
+/* Scroll indicators */
 .scroll-indicators {
   position: absolute;
   right: 2rem;
@@ -97,21 +107,12 @@ body {
 }
 
 @keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
 }
 
+/* Hero Bottom */
 .hero-bottom {
   position: absolute;
   bottom: 0;
@@ -147,7 +148,9 @@ body {
   line-height: 1.6;
 }
 
-/* Updated navbar to match new color scheme */
+/* ============================= */
+/* NAVBAR */
+/* ============================= */
 .navbar-custom {
   background: rgba(245, 241, 232, 0.95) !important;
   backdrop-filter: blur(10px);
@@ -171,7 +174,9 @@ body {
   color: var(--beige-text) !important;
 }
 
-/* Existing styles with updated color scheme */
+/* ============================= */
+/* GENERAL SECTIONS */
+/* ============================= */
 .gradient-bg {
   background: var(--dark-green);
 }
@@ -199,34 +204,49 @@ body {
   background: var(--beige-text);
 }
 
+/* ============================= */
+/* PROJECTS / SKILLS CARDS */
+/* ============================= */
 .skill-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
   border: none;
   border-radius: 15px;
   overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-.skill-icon {
-  font-size: 3rem;
-  color: var(--beige-text);
+/* Image fills the card */
+.skill-card .card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.project-card {
-  border: none;
+/* Overlay on top of the image */
+.skill-card .card-img-overlay {
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
 }
 
-.project-card:hover {
-  transform: scale(1.05);
+.skill-card .card-title,
+.skill-card .card-text {
+  color: white;
+  margin: 0;
 }
 
+/* ============================= */
+/* BUTTONS */
+/* ============================= */
 .btn-custom {
   background: var(--dark-green);
   border: none;
@@ -244,6 +264,9 @@ body {
   color: white;
 }
 
+/* ============================= */
+/* CONTACT + FOOTER */
+/* ============================= */
 .contact-form {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -268,6 +291,9 @@ footer {
   color: var(--beige-text);
 }
 
+/* ============================= */
+/* TIMELINE */
+/* ============================= */
 .timeline-item {
   border-left: 3px solid var(--beige-text);
   padding-left: 2rem;
@@ -286,7 +312,9 @@ footer {
   background: var(--beige-text);
 }
 
-/* Responsive adjustments */
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
 @media (max-width: 991px) {
   .hero-left,
   .hero-right {
@@ -338,3 +366,26 @@ footer {
     height: 300px;
   }
 }
+
+.navbar-brand i {
+  font-size: 2.5rem;       /* size of icon */
+  color: var(--beige-text);  /* match your theme */
+  transition: color 0.3s;
+}
+
+.navbar-brand i:hover {
+  color: var(--white);
+}
+
+.contact-icon {
+  font-size: 2.5rem; /* size of the icons */
+  margin: 0 15px;
+  color: var(--beige-text);
+  transition: color 0.3s, transform 0.2s;
+}
+
+.contact-icon:hover {
+  color: var(--dark-green);
+  transform: scale(1.2);
+}
+
